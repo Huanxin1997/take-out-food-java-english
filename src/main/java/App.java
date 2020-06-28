@@ -95,7 +95,7 @@ public class App {
       if (originalPrice >= 30.0) {
         output
             .append("Promotion used:\n")
-            .append("Deduct 6 yuan when the order reaches 30 yuan, saving 6 yuan\n")
+            .append("满30减6 yuan，saving 6 yuan\n")
             .append("-----------------------------------\n");
       }
       result = doubleToString(chargeForDeduce6);
@@ -103,14 +103,14 @@ public class App {
       output
           .append("Promotion used:\n")
           .append("Half price for certain dishes (")
-          .append(String.join(", ", orderDiscountItemName))
+          .append(String.join("，", orderDiscountItemName))
           .append(")，saving ")
           .append((int) (originalPrice - deducePriceAfterDiscount))
           .append(" yuan\n")
           .append("-----------------------------------\n");
       result = doubleToString(deducePriceAfterDiscount);
     }
-    output.append("Total: ").append(result).append(" yuan\n");
+    output.append("Total：").append(result).append(" yuan\n");
     output.append("===================================");
 
     return output.toString();
