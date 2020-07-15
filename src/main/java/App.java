@@ -9,7 +9,7 @@ public class App {
     private ItemRepository itemRepository;
     private SalesPromotionRepository salesPromotionRepository;
     private static final String BASIC_MONEY_UNIT = "yuan";
-    private static final String BASE_UNIT_SPLIT = " x ";
+    private static final String BASE_UNIT_SPLIT = " Ã— ";
     private double resultMoney;
     private Map<String, Item> itemMap;
     private Map<String, Item> orderItemMap;
@@ -47,7 +47,7 @@ public class App {
         res.append(chooseCharge(salesPromotionList, moneyWithoutDiscount));
 
         res.append("-----------------------------------\n")
-                .append("Total£º").append((int)resultMoney).append(" ").append(BASIC_MONEY_UNIT).append("\n")
+                .append("Total: ").append((int)resultMoney).append(" ").append(BASIC_MONEY_UNIT).append("\n")
                 .append("===================================");
         return res.toString();
     }
@@ -63,7 +63,7 @@ public class App {
                 if (Double.compare(resultMoney, moneyWithoutDiscount - 6) > 0) {
                     resultMoney = moneyWithoutDiscount - 6;
                     str = new StringBuilder();
-                    str.append("Âú30¼õ6 yuan£¬saving 6 yuan\n");
+                    str.append("Deduct 6 yuan when the order reaches 30 yuan, saving 6 yuan\n");
                 }
             } else if ("50%_DISCOUNT_ON_SPECIFIED_ITEMS".equals(pro.getType())) {
                 double saveMoney = 0;
@@ -86,10 +86,10 @@ public class App {
                             str.append(itemMap.get(item).getName());
                             flag = 1;
                         } else {
-                            str.append("£¬").append(itemMap.get(item).getName());
+                            str.append(", ").append(itemMap.get(item).getName());
                         }
                     }
-                    str.append(")£¬saving ").append((int)saveMoney).append(" yuan\n");
+                    str.append("), saving ").append((int)saveMoney).append(" yuan\n");
                 }
             }
         }
